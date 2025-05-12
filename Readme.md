@@ -1,46 +1,57 @@
-
 # Email Formalizer Chatbot
 
-A Flask-based chatbot that converts informal messages into formal language using the Hugging Face Router API. Designed for use in email drafting or professional communication contexts.
+A Flask-based chatbot that transforms informal messages into formal language using the Hugging Face Router API. This tool is ideal for drafting professional emails or improving communication tone.
+
+---
 
 ## Features
 
-- Converts informal text into formal tone.
-- Utilizes Hugging Face `deepseek/deepseek-prover-v2-671b` model.
-- Retry logic for API rate limiting or failures.
-- Basic local fallback if API fails.
-- Web interface with a simple HTML form.
+- **Text Formalization**: Converts informal text into a formal tone.
+- **Hugging Face Integration**: Utilizes the `deepseek/deepseek-prover-v2-671b` model.
+- **Retry Logic**: Handles API rate limits and failures with up to 3 retries.
+- **Fallback Mechanism**: Provides basic string-based adjustments if the API fails.
+- **Web Interface**: Simple and user-friendly HTML form for input.
+
+---
 
 ## Requirements
 
-Install dependencies using pip:
+Ensure you have Python installed. Install the required dependencies using pip:
 
 ```bash
 pip install flask requests python-dotenv
-````
-
-## Setup
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/your-username/email-formalizer-chatbot.git
-cd email-formalizer-chatbot
 ```
 
-2. Create a `.env` file in the project root and add your Hugging Face API key:
+---
 
-```env
-HF_API_TOKEN=your_huggingface_token_here
-```
+## Setup Instructions
 
-3. Run the Flask application:
+1. **Clone the Repository**:
 
-```bash
-python app.py
-```
+   ```bash
+   git clone https://github.com/your-username/email-formalizer-chatbot.git
+   cd email-formalizer-chatbot
+   ```
 
-The app will be available at `http://localhost:5000`.
+2. **Configure Environment Variables**:
+
+   Create a `.env` file in the project root and add your Hugging Face API key:
+
+   ```env
+   HF_API_TOKEN=your_huggingface_token_here
+   ```
+
+3. **Run the Application**:
+
+   Start the Flask server:
+
+   ```bash
+   python app.py
+   ```
+
+   The app will be accessible at `http://127.0.0.1:5000`.
+
+---
 
 ## File Structure
 
@@ -49,12 +60,14 @@ email-formalizer-chatbot/
 ├── app.py                # Main Flask server logic
 ├── templates/
 │   └── index.html        # Web frontend (user input form)
-├── static/               # static assets
-|   └── app.js
-|   └── style.css          
+├── static/               # Static assets
+│   ├── app.js
+│   └── style.css
 ├── .env                  # Environment variables
 └── README.md             # Documentation
 ```
+
+---
 
 ## API Endpoint
 
@@ -62,35 +75,41 @@ email-formalizer-chatbot/
 
 Send a JSON object with the message to be formalized.
 
-**Request:**
+**Request Example**:
 
 ```json
 {
-  "message": "hey, just checking if u got my last email"
+  "message": "thank you"
 }
 ```
 
-**Response:**
+**Response Example**:
 
 ```json
 {
-  "answer": "Hello, I am inquiring if you have received my previous email."
+  "answer": "I express my gratitude."
 }
 ```
+
+---
 
 ## Fallback Handling
 
 If the Hugging Face API fails or returns an error:
 
-* The system attempts a minimal string-based formalization (e.g., replacing "hey" with "Hello").
-* A fallback message is returned along with the adjusted content.
+- The system attempts a minimal string-based formalization (e.g., replacing "hey" with "Hello").
+- A fallback message is returned along with the adjusted content.
+
+---
 
 ## Notes
 
-* The model used is `deepseek/deepseek-prover-v2-671b` accessed via Hugging Face's Router API.
-* The app supports up to 3 retries for rate-limited or timed-out requests.
-* Basic text cleanup is applied if the API response is wrapped in markdown or quotes.
+- The model used is `deepseek/deepseek-prover-v2-671b`, accessed via Hugging Face's Router API.
+- The app supports up to 3 retries for rate-limited or timed-out requests.
+- Basic text cleanup is applied if the API response contains markdown or quotes.
+
+---
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
