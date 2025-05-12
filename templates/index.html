@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailPro - Email Formalizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Simple Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="custom-icon">🎓</span>
+                <span>MailMaster</span>
+            </div>
+            <h1>Upgrade your email game with AI-powered enhancements</h1>
+            <p>Tap the chat button below to begin transforming your messages</p>
+        </div>
+
+    </header>
+
+    <!-- Chat Interface -->
+    <div class="chat-container">
+        <div class="chat-window">
+            <div class="chat-header">
+                <div class="chat-header-title">
+                    <span class="custom-icon">✨</span>
+                    <span>Email Formalizer</span>
+                </div>
+                <div class="chat-header-options">
+                    <button class="refresh-btn" title="Refresh conversation"><span class="custom-icon">↻</span></button>
+                    <button class="minimize-btn" title="Minimize"><span class="custom-icon">⊟</span></button>
+                    <button class="close-btn" title="Close"><span class="custom-icon"></span>X</button>
+                </div>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot-message">
+                    <div class="message-content">Hi there! Paste your email draft below, and I’ll help you turn it into a professional message.</div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <textarea placeholder="Paste your email draft here..."></textarea>
+                <button class="send-btn"><span class="custom-icon">➤</span></button>
+            </div>
+        </div>
+        <div class="chat-button">
+            <button><span class="custom-icon">✉</span></button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
